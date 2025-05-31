@@ -110,7 +110,7 @@
                             </div>
                             <div>
                                 <div class="text-sm text-gray-500">Fostered</div>
-                                <div class="font-bold text-xl">2</div>
+                                <div class="font-bold text-xl">0</div>
                             </div>
                         </div>
                     </div>

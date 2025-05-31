@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AdoptController;
+use App\Http\Controllers\AnimalReportController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -86,5 +87,19 @@ Route::get('/donasi/sukses/{id}', [DonationController::class, 'success'])->name(
 // Route untuk testing - Simulasi pembayaran sukses
 Route::get('/donasi/test-payment/{id}', [DonationController::class, 'simulatePayment'])->name('donation.test-payment');
 
+// Animal Report Routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/report', [AnimalReportController::class, 'showReportForm'])->name('reports.create');
+    Route::post('/report', [AnimalReportController::class, 'store'])->name('reports.store');
+    Route::get('/report/thankyou', [AnimalReportController::class, 'thankYou'])->name('reports.thankyou');
+    Route::get('/report/status', [AnimalReportController::class, 'showUserReports'])->name('reports.status');
+});
+
+// Admin routes for managing reports
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/reports', [AnimalReportController::class, 'index'])->name('admin.reports.index');
+    Route::get('/admin/reports/{report}', [AnimalReportController::class, 'show'])->name('admin.reports.show');
+    Route::patch('/admin/reports/{report}/status', [AnimalReportController::class, 'updateStatus'])->name('admin.reports.update-status');
+});
 
 require __DIR__.'/auth.php';

@@ -8,9 +8,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Donation;
 
 class ProfileController extends Controller
 {
+    /**
+     * Display the user's profile page.
+     */
+    public function home(Request $request): View
+    {
+        $user = $request->user();
+        
+        // Get user's donations statistics
+        $totalDonations = Donation::where('email', $user->email)
+            ->where('status', 'paid')
+            ->sum('amount');
+            
+        $donationsCount = Donation::where('email', $user->email)
+            ->where('status', 'paid')
+            ->count();
+
+        return view('profile.profile', [
+            'user' => $user,
+            'totalDonations' => $totalDonations,
+            'donationsCount' => $donationsCount,
+        ]);
+    }
+
+    /**
+     * Display the user's profile settings form.
+     */
+    public function settings(Request $request): View
+    {
+        return view('profile.settings', [
+            'user' => $request->user(),
+        ]);
+    }
+
     /**
      * Display the user's profile form.
      */
@@ -26,15 +60,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validated = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($request->hasFile('profile_photo')) {
+            $path = $request->file('profile_photo')->store('profile-photos', 'public');
+            $validated['profile_photo'] = $path;
         }
 
-        $request->user()->save();
+        $user->fill($validated);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        return Redirect::route('profile.settings')->with('status', 'profile-updated');
     }
 
     /**

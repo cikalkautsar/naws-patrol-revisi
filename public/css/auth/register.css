@@ -1,0 +1,45 @@
+@import 'shared.css';
+
+/* Register specific styles */
+.register-button {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.login-link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Password requirements */
+.password-requirements {
+    font-size: 0.75rem;
+    color: #6B7280;
+    margin-top: 0.5rem;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0 0;
+}
+
+.password-requirements li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.password-requirements li::before {
+    content: "•";
+    margin-right: 0.5rem;
+    color: #9CA3AF;
+}
+
+/* Confirmation section */
+.confirmation-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E5E7EB;
+} 

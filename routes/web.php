@@ -5,6 +5,7 @@ use App\Http\Controllers\DonationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AdoptController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +33,38 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/adopt', [AdoptController::class, 'showAllCategories'])
+         ->name('adopt.index');
+
+    // 2. Adoption Category
+    Route::get('/adopt/category', [AdoptController::class, 'showAllCategories'])
+         ->name('adopt.category.index');
+
+    Route::get('/adopt/category/{type}', [AdoptController::class, 'category'])
+         ->whereIn('type', ['cat', 'dog', 'bird', 'rabbit'])
+         ->name('adopt.category.show');
+
+    Route::get('/adopt/search', [AdoptController::class, 'search'])
+         ->name('adopt.search');
+
+    // 3. Adoption Status
+    Route::get('/adopt/status', [AdoptController::class, 'adoptionStatus'])
+         ->name('adopt.status');
+
+    // 4. Help Me Find a Home
+    Route::get('/adopt/help-me-find-home', [AdoptController::class, 'helpMeAFindHome'])
+         ->name('adopt.help');
+
+    // 5. Detail Hewan
+    Route::get('/adopt/detail/{id}', [AdoptController::class, 'show'])
+         ->name('adopt.detail');
+     Route::get('/adopt/form', [AdoptController::class, 'showGeneralForm'])
+         ->name('adopt.form');
+     Route::post('/adopt/form', [AdoptController::class, 'submitGeneralForm'])
+         ->name('adopt.form.submit');
+     Route::get('/adopt/thankyou', [AdoptController::class, 'thankYou'])
+         ->name('adopt.thankyou');
 });
 
 // === DONASI ===
@@ -52,5 +85,6 @@ Route::get('/donasi/sukses/{id}', [DonationController::class, 'success'])->name(
 
 // Route untuk testing - Simulasi pembayaran sukses
 Route::get('/donasi/test-payment/{id}', [DonationController::class, 'simulatePayment'])->name('donation.test-payment');
+
 
 require __DIR__.'/auth.php';

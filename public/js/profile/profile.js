@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
-            this.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            this.style.boxShadow = '0 2px 9px rgba(0,0,0,0.1)';
         });
     });
 

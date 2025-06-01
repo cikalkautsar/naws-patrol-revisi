@@ -1,0 +1,324 @@
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    min-height: 101vh;
+}
+
+.header {
+    background-color: #1B2B44;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    min-height: 400px;
+    background-image: url('/images/paw.png');
+    background-repeat: no-repeat;
+    background-position: center bottom -800px;
+    background-size: 1350px;
+    opacity: 0.9;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.nav-menu {
+    display: flex;
+    padding: 16px 32px;
+    gap: 32px;
+    background-color: transparent;
+    position: relative;
+    z-index: 3;
+    justify-content: center;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    font-weight: 500;
+}
+
+.nav-menu a.active {
+    opacity: 1;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+}
+
+.header-content {
+    padding: 32px 48px 64px;
+    position: relative;
+    z-index: 2;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-container {
+    position: relative;
+    max-width: 900px;
+}
+
+.header h1 {
+    margin-top: 80px;
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.header p {
+    margin-top: 80px;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+    line-height: 1.5;
+}
+
+.paw-print {
+    display: none; /* Hide the img element since we're using background-image */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 180px;
+    padding-bottom: 80px;
+}
+
+.profile-section {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 4;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    color: #1B2B44;
+    opacity: 0.8;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    font-size: 14px;
+    color: #1B2B44;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 15px;
+    color: #1B2B44;
+    font-weight: 600;
+}
+
+.report-section {
+    margin-top: 32px;
+}
+
+.report-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #1B2B44;
+    text-align: center;
+}
+
+.report-cards {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.report-card {
+    flex: 1;
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.report-icon {
+    background: #FFB74D;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.report-icon svg {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+.report-content {
+    flex: 1;
+}
+
+.report-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.report-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1B2B44;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 400px;
+    margin-top: 24px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 16px;
+}
+
+.action-buttons form {
+    width: 200px;
+    height: 45px;
+    flex: none;
+}
+
+.action-button {
+    padding: 12px 24px;
+    border-radius: 15px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+a.action-button {
+    width: 200px;
+    height: 45px;
+    text-decoration: none;
+}
+
+.settings-button {
+    background-color: #FFB74D;
+    color: white;
+    box-shadow: 0 2px 4px rgba(255, 183, 77, 0.3);
+    width: 200px;
+    height: 45px;
+}
+
+.settings-button:hover {
+    background-color: #FFA726;
+    transform: translateY(-2px);
+}
+
+.logout-button {
+    background-color: #EF4444;
+    color: white;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+    width: 200px;
+    height: 45px;
+}
+
+.logout-button:hover {
+    background-color: #DC2626;
+    transform: translateY(-2px);
+}
+
+.action-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+form {
+    flex: 1;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+    
+    .profile-section {
+        padding: 20px;
+    }
+    
+    .report-cards {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0;
+    }
+    
+    .action-buttons form,
+    .action-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 16px;
+        height: 100px;
+    }
+    
+    .nav-menu {
+        gap: 15px;
+        margin-bottom: 12px;
+    }
+    
+    .nav-menu a {
+        font-size: 12px;
+    }
+    
+    .header h1 {
+        font-size: 20px;
+    }
+    
+    .header p {
+        font-size: 11px;
+    }
+} 

@@ -1,0 +1,207 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #1B2B44;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    min-height: 400px;
+    background-image: url('/img/paw.png');
+    background-repeat: no-repeat;
+    background-position: center bottom -800px;
+    background-size: 1350px;
+    opacity: 0.9;
+}
+
+.header h1 {
+    color: white;
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+.profile-container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 5%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    font-size: 1rem;
+}
+
+.info-item img {
+    width: 32px;
+    height: 32px;
+    align-items: center;
+}
+
+.info-item strong {
+    display: block;
+    color: #1B2B44;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.info-item span {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Form Styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    background-color: white;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #fbbf24;
+    border-color: #fbbf24;
+}
+
+/* Button Styles */
+button {
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* Health Status Bar */
+.health-status-bar {
+    height: 0.5rem;
+    background-color: #fbbf24;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.health-status-bar .progress {
+    height: 100%;
+    background-color: white;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+/* Card Styles */
+.pet-info-card {
+    transition: transform 0.2s ease-in-out;
+    margin-bottom: 2rem;
+}
+
+.pet-info-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Container Max Width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card Layout */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Warning Message */
+.warning-message {
+    border-left: 4px solid #fbbf24;
+    background-color: #fef3c7;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Navigation */
+.nav-link {
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #fbbf24;
+}
+
+/* Form Container */
+.form-container {
+    background-color: #fff9e5;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Scroll Animation */
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+} 

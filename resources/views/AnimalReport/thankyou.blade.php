@@ -14,7 +14,7 @@
                 <div class="flex space-x-4 text-white font-medium">
                     <a href="#" class="hover:text-gray-200">Profile</a>
                     <a href="#" class="hover:text-gray-200">Adopsi</a>
-                    <a href="#" class="hover:text-gray-200">Foster</a>
+                    <a href="{{ route('fosterHome.form') }}" class="hover:text-gray-200">Foster</a>
                     <a href="#" class="hover:text-gray-200">Laporan Hewan Liar</a>
                     <a href="#" class="hover:text-gray-200">Donasi & Crowdfunding</a>
                     <a href="#" class="hover:text-gray-200">Edukasi</a>

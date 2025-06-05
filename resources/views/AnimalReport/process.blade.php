@@ -1,126 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset('css/report/processReport.css') }}">
     <title>Status Laporan Hewan</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
-<body class="bg-gray-100">
-    <div class="min-h-screen py-6">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Navigation Tabs -->
-            <div class="bg-yellow-400 rounded-t-lg p-4">
-                <div class="flex space-x-4 text-white font-medium">
-                    <a href="#" class="hover:text-gray-200">Profile</a>
-                    <a href="#" class="hover:text-gray-200">Adopsi</a>
-                    <a href="#" class="hover:text-gray-200">Foster</a>
-                    <a href="#" class="hover:text-gray-200">Laporan Hewan Liar</a>
-                    <a href="#" class="hover:text-gray-200">Donasi & Crowdfunding</a>
-                    <a href="#" class="hover:text-gray-200">Edukasi</a>
-                </div>
+<body>
+<header class="navbar">
+            <a href="{{ route('profile.home') }}">Profile</a>
+            <a href="{{ route('adopt.index') }}">Adoption</a>
+            <a href="{{ route('fosterHome.form') }}">Foster</a>
+            <a href="{{ route('donation.form') }}">Donations</a>
+            <a href="{{ route('education.index') }}">Educations</a>
+            <a href="{{ route('reports.create') }}"class="active">Stray Animal Report</a>
+            </div>
+        </div>
+    </nav>
+  </header>
+    <div class="container">
+        <div class="demo-controls">
+            <h3>Demo Status Laporan Hewan</h3>
+            <div class="demo-buttons">
+                <button class="demo-btn active" onclick="setStatus('pending')">Pending</button>
+                <button class="demo-btn" onclick="setStatus('reviewing')">Sedang Review</button>
+                <button class="demo-btn" onclick="setStatus('accepted')">Diterima</button>
+                <button class="demo-btn" onclick="setStatus('rejected')">Ditolak</button>
+            </div>
+        </div>
+        <div class="status-card">
+            <div id="loading" class="loading" style="display: none;">
+                <div class="spinner"></div>
             </div>
 
-            <!-- Main Content -->
-            <div class="bg-white shadow-lg rounded-b-lg p-6">
-                <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Status Laporan Anda</h2>
-
-                    @if($reports->isEmpty())
-                        <div class="text-center py-8">
-                            <p class="text-gray-500">Anda belum memiliki laporan hewan.</p>
-                            <a href="{{ route('reports.create') }}" class="mt-4 inline-block bg-yellow-400 text-white px-6 py-2 rounded-md hover:bg-yellow-500">
-                                Buat Laporan Baru
-                            </a>
+            <div id="status-content">
+                <div class="progress-container">
+                    <div class="step">
+                        <div id="step1" class="step-circle completed">
+                            <i class="fa-solid fa-check"></i>
                         </div>
-                    @else
-                        <div class="space-y-6">
-                            @foreach($reports as $report)
-                            <div class="border rounded-lg overflow-hidden">
-                                <div class="p-6">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <div>
-                                            <h3 class="text-lg font-semibold text-gray-800">Laporan #{{ $report->id }}</h3>
-                                            <p class="text-sm text-gray-500">{{ $report->created_at->format('d M Y, H:i') }}</p>
-                                        </div>
-                                        <div>
-                                            @switch($report->status)
-                                                @case('pending')
-                                                    <span class="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800">
-                                                        Menunggu Verifikasi
-                                                    </span>
-                                                    @break
-                                                @case('verified')
-                                                    <span class="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">
-                                                        Terverifikasi
-                                                    </span>
-                                                    @break
-                                                @case('completed')
-                                                    <span class="px-3 py-1 text-sm rounded-full bg-green-100 text-green-800">
-                                                        Selesai
-                                                    </span>
-                                                    @break
-                                            @endswitch
-                                        </div>
-                                    </div>
-
-                                    <div class="grid grid-cols-2 gap-4 mb-4">
-                                        <div>
-                                            <p class="text-sm text-gray-600">Lokasi:</p>
-                                            <p class="font-medium">{{ $report->address }}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-sm text-gray-600">Alasan Pelaporan:</p>
-                                            <p class="font-medium">{{ Str::limit($report->report_reason, 100) }}</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Progress Steps -->
-                                    <div class="relative pt-8">
-                                        <div class="flex items-center justify-between w-full mb-2">
-                                            <div class="w-8 h-8 rounded-full {{ $report->status != 'pending' ? 'bg-green-500' : 'bg-yellow-400' }} flex items-center justify-center">
-                                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="w-8 h-8 rounded-full {{ $report->status == 'verified' || $report->status == 'completed' ? 'bg-green-500' : 'bg-gray-300' }} flex items-center justify-center">
-                                                @if($report->status == 'verified' || $report->status == 'completed')
-                                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                    </svg>
-                                                @else
-                                                    <span class="text-white">2</span>
-                                                @endif
-                                            </div>
-                                            <div class="w-8 h-8 rounded-full {{ $report->status == 'completed' ? 'bg-green-500' : 'bg-gray-300' }} flex items-center justify-center">
-                                                @if($report->status == 'completed')
-                                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                                    </svg>
-                                                @else
-                                                    <span class="text-white">3</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="absolute top-0 left-0 w-full flex justify-between mt-16">
-                                            <span class="text-xs text-gray-600">Laporan Diterima</span>
-                                            <span class="text-xs text-gray-600">Verifikasi</span>
-                                            <span class="text-xs text-gray-600">Selesai</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
+                        <div class="step-label">Pengisian formulir</div>
+                    </div>
+                    
+                    <div class="connector active" id="connector1"></div>
+                    
+                    <div class="step">
+                        <div id="step2" class="step-circle current">
+                            2
                         </div>
-
-                        <!-- Pagination -->
-                        <div class="mt-6">
-                            {{ $reports->links() }}
+                        <div class="step-label">Identifikasi laporan</div>
+                    </div>
+                    
+                    <div class="connector" id="connector2"></div>
+                    
+                    <div class="step">
+                        <div id="step3" class="step-circle pending">
+                            3
                         </div>
-                    @endif
+                        <div class="step-label">Status Laporan</div>
+                    </div>
+                </div>
+
+                <div class="status-content">
+                    <h2 id="status-title" class="status-title">Terima kasih telah melapor!</h2>
+                    <p id="status-description" class="status-description">
+                        Tim shelter kami akan menghubungi Anda dalam 1-3 hari kerja untuk proses verifikasi lebih lanjut
+                    </p>
+                    
+                    <div id="admin-notes" class="admin-notes" style="display: none;">
+                        <h4>Catatan dari Admin:</h4>
+                        <p id="admin-notes-text"></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <input type="hidden" id="report-id" value="123">
+
+    <script>
+        const icons = {
+            checkmark: `<i class="fa-solid fa-check"></i>`,
+            cross: `<i class="fa-solid fa-xmark"></i>`
+        };
+
+        const statusConfig = {
+            pending: {
+                title: "Terima kasih telah melapor!",
+                description: "Tim shelter kami akan menghubungi Anda dalam 1-3 hari kerja untuk proses verifikasi lebih lanjut",
+                steps: {
+                    step1: { class: "completed", content: icons.checkmark },
+                    step2: { class: "current pulse", content: "2" },
+                    step3: { class: "pending", content: "3" }
+                },
+                connectors: {
+                    connector1: "active",
+                    connector2: ""
+                }
+            },
+            reviewing: {
+                title: "Laporan sedang di seleksi",
+                description: "Tim kami sedang menyeleksi laporan kelayakan mohon bersabar untuk menunggu hasil selama 24 jam!",
+                steps: {
+                    step1: { class: "completed", content: icons.checkmark },
+                    step2: { class: "completed", content: icons.checkmark },
+                    step3: { class: "current pulse", content: "3" }
+                },
+                connectors: {
+                    connector1: "active",
+                    connector2: "active"
+                }
+            },
+            accepted: {
+                title: "Laporan anda lulus seleksi!",
+                description: "Terima kasih telah melapor, tim shelter akan segera menjemput hewan tersebut hari ini!",
+                steps: {
+                    step1: { class: "completed", content: icons.checkmark },
+                    step2: { class: "completed", content: icons.checkmark },
+                    step3: { class: "completed", content: icons.checkmark }
+                },
+                connectors: {
+                    connector1: "active",
+                    connector2: "active"
+                }
+            },
+            rejected: {
+                title: "Maaf laporan anda tidak lulus seleksi..",
+                description: "Laporan Anda sangat berarti. Namun, berdasarkan standar penanganan kami, hewan yang dilaporkan belum memenuhi kriteria untuk dipindahkan ke shelter secara mendesak. Penanganan diprioritaskan untuk hewan dalam kondisi sakit parah, terluka, atau berada dalam lingkungan berbahaya. Terima kasih atas pengertiannya.",
+                steps: {
+                    step1: { class: "completed", content: icons.checkmark },
+                    step2: { class: "completed", content: icons.checkmark },
+                    step3: { class: "rejected", content: icons.cross }
+                },
+                connectors: {
+                    connector1: "active",
+                    connector2: "active" 
+                }
+            }
+        };
+
+        let currentStatus = 'pending';
+        let pollingInterval;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const reportId = document.getElementById('report-id').value;
+            if (reportId && reportId !== '123') {
+                fetchReportStatus(reportId);
+                startPolling(reportId);
+            } else {
+                updateStatusDisplay('pending');
+            }
+        });
+
+        async function fetchReportStatus(reportId) {
+            try {
+                showLoading(true);
+                const response = await fetch(`/api/reports/${reportId}/status`, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                updateStatusDisplay(data.status, data.admin_notes);
+                showLoading(false);
+            } catch (error) {
+                console.error('Error fetching status:', error);
+                showError('Gagal memuat status laporan. Silakan refresh halaman.');
+                showLoading(false);
+            }
+        }
+
+        function startPolling(reportId) {
+            pollingInterval = setInterval(() => {
+                fetchReportStatus(reportId);
+            }, 30000);
+        }
+
+        function stopPolling() {
+            if (pollingInterval) {
+                clearInterval(pollingInterval);
+            }
+        }
+
+        function updateStatusDisplay(status, adminNotes = '') {
+            if (!statusConfig[status]) {
+                console.error('Unknown status:', status);
+                return;
+            }
+
+            currentStatus = status;
+            const config = statusConfig[status];
+
+            document.getElementById('status-title').textContent = config.title;
+            document.getElementById('status-description').textContent = config.description;
+
+            Object.keys(config.steps).forEach(stepId => {
+                const stepElement = document.getElementById(stepId);
+                const stepConfig = config.steps[stepId];
+                stepElement.className = `step-circle ${stepConfig.class}`;
+                stepElement.innerHTML = stepConfig.content;
+            });
+
+            Object.keys(config.connectors).forEach(connectorId => {
+                const connectorElement = document.getElementById(connectorId);
+                connectorElement.className = `connector ${config.connectors[connectorId]}`;
+            });
+
+            const adminNotesDiv = document.getElementById('admin-notes');
+            if (adminNotes && adminNotes.trim()) {
+                document.getElementById('admin-notes-text').textContent = adminNotes;
+                adminNotesDiv.style.display = 'block';
+            } else {
+                adminNotesDiv.style.display = 'none';
+            }
+
+            updateDemoButtons(status);
+        }
+
+        function setStatus(status) {
+            updateStatusDisplay(status);
+        }
+
+        function updateDemoButtons(activeStatus) {
+            document.querySelectorAll('.demo-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const statusMap = {
+                'pending': 0,
+                'reviewing': 1,
+                'accepted': 2,
+                'rejected': 3
+            };
+            
+            const buttons = document.querySelectorAll('.demo-btn');
+            if (buttons[statusMap[activeStatus]]) {
+                buttons[statusMap[activeStatus]].classList.add('active');
+            }
+        }
+
+        function showLoading(show) {
+            const loading = document.getElementById('loading');
+            const content = document.getElementById('status-content');
+            
+            if (show) {
+                loading.style.display = 'flex';
+                content.style.display = 'none';
+            } else {
+                loading.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }
+
+        function showError(message) {
+            const statusTitle = document.getElementById('status-title');
+            const statusDescription = document.getElementById('status-description');
+            
+            statusTitle.textContent = 'Terjadi Kesalahan';
+            statusDescription.textContent = message;
+            statusTitle.style.color = '#ef4444';
+        }
+
+        window.addEventListener('beforeunload', function() {
+            stopPolling();
+        });
+
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+
+        function showNotification(status) {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                const notifications = {
+                    'accepted': {
+                        title: 'Laporan Diterima!',
+                        body: 'Tim rescue akan segera menjemput hewan tersebut.'
+                    },
+                    'rejected': {
+                        title: 'Status Laporan',
+                        body: 'Laporan Anda tidak memenuhi kriteria saat ini.'
+                    }
+                };
+
+                if (notifications[status]) {
+                    new Notification(notifications[status].title, {
+                        body: notifications[status].body,
+                        icon: '/favicon.ico'
+                    });
+                }
+            }
+        }
+    </script>
 </body>
-</html> 
+</html>

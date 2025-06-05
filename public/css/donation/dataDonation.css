@@ -1,0 +1,276 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-menu{
+    display: flex;
+    padding: 16px 32px;
+    gap: 32px;
+    background-color: transparent;
+    position: relative;
+    z-index: 3;
+    justify-content: center;
+    background-color: #FAAF32;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.nav-menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    font-weight: 500;
+    gap: 10px;
+}
+
+.nav-menu a.active {
+    opacity: 1;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+} 
+  .container {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 30px;
+  }
+  
+  .wrapper {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+  }
+  
+  .image-card {
+    flex: 3;
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+  }
+  
+  .image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px;
+  }
+  
+  .form-card {
+    flex: 2;
+    max-width: 570px;
+    width: 100%;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form-card h2 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .form-card input {
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .form-card input[type="text"],
+  .form-card input[type="email"],
+  .form-card input[type="tel"] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 12px 0;
+    font-size: 14px;
+    width: 100%;
+    border-width: 2px;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+  }
+  
+  .form-card input[type="text"]:focus,
+  .form-card input[type="email"]:focus,
+  .form-card input[type="tel"]:focus {
+    outline: none;
+    border-bottom: 2px solid #1a73e8;
+  }
+  
+  
+  .form-card select {
+    padding: 12px;
+    border: 1px solid #FAAF32;
+    color: #ffffff;
+    background-color: #FAAF32;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  .kodepos {
+    padding: 12px !important;
+    border: 1px solid #FAAF32 !important;
+    color: #FAAF32 !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+  }
+  
+  .alamat-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .alamat-group select,
+  .alamat-group input {
+    flex: 1;
+    min-width: 100px;
+  }
+  
+  .form-section {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+  
+  .lainnya {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid #ccc !important;
+    border-radius: 10px !important;
+    padding: 12px !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+    background-color: #fff !important;
+    width: 540px !important;
+  }
+  
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+  }
+  
+  .form-card button {
+    background-color: #2B6ED6;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .form-card button:hover {
+    background-color: #155ab6;
+  }
+
+.donation-amount {
+    margin-top: 24px;
+    width: 100%;
+}
+
+.donation-amount h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.amount-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.amount-btn {
+    padding: 12px;
+    border: 2px solid #FAAF32;
+    border-radius: 8px;
+    background: white;
+    color: #2B6ED6;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.amount-btn:hover {
+    background: #FAAF32;
+    color: white;
+}
+
+.amount-btn.selected {
+    background: #FAAF32;
+    color: white;
+}
+
+.custom-amount {
+    width: 100%;
+}
+
+.custom-amount input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #FAAF32;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #2B6ED6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #245bb3;
+}

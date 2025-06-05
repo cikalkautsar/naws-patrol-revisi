@@ -118,7 +118,7 @@ const tipsData = {
           "Isolasi burung yang sakit dari burung lain",
           "Berikan kehangatan ekstra dengan lampu infrared jika perlu"
         ],
-        conclusion: "Deteksi dini dan penanganan yang tepat adalah kunci untuk menjaga kesehatan burung kesayangan Anda."
+        conclusion: "Deteksi dini dan penanganan yang tepat adalah kunci untuk menjaga kesehatan burung kesayangan anda."
       }
     }
   };

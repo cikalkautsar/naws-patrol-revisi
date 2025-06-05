@@ -24,7 +24,7 @@
   <main class="edukasi-section" id="landing-page">
     <section class="hero">
       <div class="hero-text">
-        <h1>Rawat peliharaanmu dengan penuh cinta!</h1>
+        <h1>Rawat peliharaanmu dengan penuh cinta.!</h1>
         <p>Panduan simpel biar hewan peliharaan tetap sehat, aktif, dan bahagia.</p>
         <a class="btn-tips" >Yuk, Cek Tipsnya!</a>
       </div>

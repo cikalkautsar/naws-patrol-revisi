@@ -1,0 +1,375 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+  }
+  
+  .navbar {
+    display: flex;
+    padding: 16px 32px;
+    gap: 31px;
+    background-color: transparent;
+    position: relative;
+    z-index: 3;
+    justify-content: center;
+    background-color: #FAAF32;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.navbar a{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    font-weight: 500;
+    gap: 10px;
+}
+
+.navbar a.active {
+    opacity: 1;
+}
+
+.navbar a:hover {
+    opacity: 1;
+} 
+  
+  .edukasi-section {
+    padding: 10px 20px;
+    border-radius: 70px;
+  
+  }
+  
+  .hero {
+    background-color: #fff;
+    padding: 40px;
+    margin: 20px auto;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .hero-text h1 {
+    font-size: 28px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .hero-text p {
+    color: #888;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-tips {
+    background-color: #FAAF32;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn-tips:hover {
+    background-color: #f39c12;
+  }
+  
+  .hero-img img {
+    width: 160px;
+    border-radius: 30px;
+    background-color: #FAAF32;
+    border-radius: 40%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    scroll-margin-top: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .read-more {
+    color: #FAAF32;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .read-more:hover {
+    color: #f39c12;
+  }
+  
+  .read-more i {
+    margin-left: 5px;
+  }
+  
+  /* Tips Detail Page Styles */
+  .tips-detail-section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    scroll-padding-top: 0;
+  }
+  
+  .back-button {
+    margin-bottom: 30px;
+  }
+  
+  .btn-back {
+    background-color: #FAAF32;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .btn-back:hover {
+    background-color: #f39c12;
+  }
+  
+  .tips-content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .tips-header {
+    margin-bottom: 30px;
+  }
+  
+  .tips-main-image {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .tips-meta {
+    text-align: left;
+  }
+  
+  .tips-category {
+    background-color: #FAAF32;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  .tips-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  
+  .tips-info {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .tips-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .tips-info span:before {
+    content: "•";
+    color: #FAAF32;
+    font-weight: bold;
+  }
+  
+  .tips-info span:first-child:before {
+    content: "";
+  }
+  
+  .tips-body {
+    color: #333;
+  }
+  
+  .tips-intro {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #FAAF32;
+  }
+  
+  .tips-section {
+    margin-bottom: 25px;
+  }
+  
+  .tips-section h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .tips-section p {
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .tips-list {
+    margin: 30px 0;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .tips-list h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .tips-list ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .tips-list li {
+    color: #555;
+    margin-bottom: 8px;
+    padding-left: 25px;
+    position: relative;
+  }
+  
+  .tips-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #FAAF32;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .tips-conclusion {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #fff5e6;
+    border-radius: 10px;
+    border: 1px solid #FAAF32;
+  }
+  
+  .tips-conclusion h3 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .tips-conclusion p {
+    color: #555;
+    margin-bottom: 0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    
+    .hero-img {
+      margin-top: 20px;
+    }
+    
+    .card-container {
+      gap: 30px;
+    }
+    
+    .card {
+      width: 100%;
+      max-width: 350px;
+    }
+    
+    .tips-content {
+      padding: 25px;
+    }
+    
+    .tips-title {
+      font-size: 24px;
+    }
+    
+    .tips-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .tips-main-image {
+      height: 200px;
+    }
+  }
